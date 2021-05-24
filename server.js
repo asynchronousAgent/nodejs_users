@@ -93,4 +93,4 @@ const adding = async () => {
   console.log(usersRec);
   console.log(usersProfile);
 };
-setTimeout(adding, 2000);
+adding();
