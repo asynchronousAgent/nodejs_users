@@ -38,6 +38,66 @@ const obj = [
     email: "raktim@gmail.com",
     password: "helloraktim",
   },
+  {
+    firstname: "Gftgc",
+    lastname: "Bhowmik",
+    email: "gftgc@gmail.com",
+    password: "hellorgftgc",
+  },
+  {
+    firstname: "Tapan",
+    lastname: "Bhowmik",
+    email: "tapan@gmail.com",
+    password: "hellortapan",
+  },
+  {
+    firstname: "Bapan",
+    lastname: "Mandal",
+    email: "bapan@gmail.com",
+    password: "hellorbapan",
+  },
+  {
+    firstname: "Babul",
+    lastname: "Manu",
+    email: "babul@gmail.com",
+    password: "hellobabul",
+  },
+  {
+    firstname: "Sentu",
+    lastname: "koley",
+    email: "sentu@gmail.com",
+    password: "hellosentu",
+  },
+  {
+    firstname: "Ghontu",
+    lastname: "Saha",
+    email: "ghontu@gmail.com",
+    password: "helloghontu",
+  },
+  {
+    firstname: "Kalu",
+    lastname: "Saha",
+    email: "kalu@gmail.com",
+    password: "hellokalu",
+  },
+  {
+    firstname: "Gammyu",
+    lastname: "Seth",
+    email: "gammyu@gmail.com",
+    password: "hellogammyu",
+  },
+  {
+    firstname: "Ghonaaa",
+    lastname: "Lal",
+    email: "ghonaa@gmail.com",
+    password: "helloghonna",
+  },
+  {
+    firstname: "Pantu",
+    lastname: "Dutt",
+    email: "pantu@gmail.com",
+    password: "hellogpantu",
+  },
 ];
 
 const obj2 = [
@@ -66,6 +126,56 @@ const obj2 = [
     dob: new Date("1998-03-23"),
     mobile_no: 5638721489,
   },
+  {
+    email: "gftgc@gmail.com",
+    dob: new Date("1992-03-23"),
+    mobile_no: 5638721489,
+  },
+  {
+    email: "tapan@gmail.com",
+    dob: new Date("1999-03-23"),
+    mobile_no: 5638721489,
+  },
+  {
+    email: "bapan@gmail.com",
+    dob: new Date("2002-03-23"),
+    mobile_no: 5638721489,
+  },
+  {
+    email: "babul@gmail.com",
+    dob: new Date("1987-03-23"),
+    mobile_no: 5638721489,
+  },
+  {
+    email: "sentu@gmail.com",
+    dob: new Date("1957-03-23"),
+    mobile_no: 9638701489,
+  },
+  {
+    email: "ghontu@gmail.com",
+    dob: new Date("2017-03-23"),
+    mobile_no: 5638121489,
+  },
+  {
+    email: "kalu@gmail.com",
+    dob: new Date("1997-03-23"),
+    mobile_no: 7638721489,
+  },
+  {
+    email: "gammyu@gmail.com",
+    dob: new Date("1981-03-23"),
+    mobile_no: 6638721489,
+  },
+  {
+    email: "ghonaa@gmail.com",
+    dob: new Date("1992-10-23"),
+    mobile_no: 5638721489,
+  },
+  {
+    email: "pantu@gmail.com",
+    dob: new Date("1977-08-23"),
+    mobile_no: 9538721489,
+  },
 ];
 let usersRec = [];
 let usersProfile = [];
@@ -90,7 +200,8 @@ const adding = async () => {
     await userProfile.save();
     usersProfile.push(userProfile);
   }
-  console.log(usersRec);
-  console.log(usersProfile);
+  // console.log(usersRec);
+  // console.log(usersProfile);
+  console.log("total users: ", usersRec.length);
 };
 adding();
