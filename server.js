@@ -182,13 +182,15 @@ let usersProfile = [];
 for (let i = 0; i < obj.length; i++) {
   obj[i].password = bcrypt.hashSync(obj[i].password, 10);
   let newUSer = new User(obj[i]);
-  newUSer
-    .save()
-    .then((resolve) => {
-      usersRec.push(resolve);
-      //   console.log(`User ${i} saved ${resolve._id}`);
-    })
-    .catch((err) => console.log(err));
+  const userAdd = async (newUSer, usersRec) => {
+    try {
+      let userResolve = await newUSer.save();
+      usersRec.push(userResolve);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  userAdd(newUSer, usersRec);
 }
 
 const adding = async () => {
