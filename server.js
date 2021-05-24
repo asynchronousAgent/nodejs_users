@@ -179,31 +179,25 @@ const obj2 = [
 ];
 let usersRec = [];
 let usersProfile = [];
-for (let i = 0; i < obj.length; i++) {
-  obj[i].password = bcrypt.hashSync(obj[i].password, 10);
-  let newUSer = new User(obj[i]);
-  const userAdd = async (newUSer, usersRec) => {
-    try {
-      let userResolve = await newUSer.save();
-      usersRec.push(userResolve);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  userAdd(newUSer, usersRec);
-}
+const wrapperFun = async (usersRec) => {
+  for await (let doc of obj) {
+    doc.password = await bcrypt.hash(doc.password, 10);
+    let newUSer = new User(doc);
+    let userResolve = await newUSer.save();
+    usersRec.push(userResolve);
+  }
+  await adding();
+};
+wrapperFun(usersRec);
 
 const adding = async () => {
-  for (let c = 0; c < obj2.length; c++) {
-    let user = await User.findOne({ email: obj2[c].email });
-    delete obj2[c].email;
-    obj2[c]["user_id"] = user._id;
-    let userProfile = new UsersProfile(obj2[c]);
+  for await (let profileDoc of obj2) {
+    let user = await User.findOne({ email: profileDoc.email });
+    delete profileDoc.email;
+    profileDoc["user_id"] = user._id;
+    let userProfile = new UsersProfile(profileDoc);
     await userProfile.save();
     usersProfile.push(userProfile);
   }
-  // console.log(usersRec);
-  // console.log(usersProfile);
-  console.log("total users: ", usersRec.length);
+  console.log("Total no of users:", usersRec.length);
 };
-adding();

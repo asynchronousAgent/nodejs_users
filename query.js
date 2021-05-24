@@ -13,7 +13,7 @@ const func = async () => {
       {
         $project: {
           user_id: "$user_id",
-          userProfile: "$dob",
+          dateOfBirth: "$dob",
           Age: {
             $divide: [
               { $subtract: [new Date(), "$dob"] },
@@ -30,9 +30,7 @@ const func = async () => {
       sum += userProfile[i].Age;
       if (userProfile[i].Age > 25) arr.push(userProfile[i]);
     }
-    // console.log(userProfile);
     console.log("Average age of all users is:", sum / userProfile.length);
-    // console.log(arr);
     for (let j = 0; j < arr.length; j++) {
       let user = await User.findByIdAndRemove(arr[j].user_id);
       await UsersProfile.findByIdAndRemove(arr[j]._id);
